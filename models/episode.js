@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const episodeSchema = new Schema({
     name: {type: String, required: true},
+    season: {type: Number},
     comments: [{
         type: [Schema.Types.ObjectId],
         ref: 'Comment',
