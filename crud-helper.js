@@ -6,9 +6,9 @@ require('./config/database');
 const User = require('./models/user');
 // const Comment = require('./models/comment');
 // const Episode = require('./models/episode');
-// const Movie = require('./models/movie');
+const Movie = require('./models/movie');
 // const Series = require('./models/series');
 
 // Local variables will come in handy for holding retrieved documents
-let user, item, category, order;
-let users, items, categories, orders;
+let user, movie, category, order;
+let users, movies, categories, orders;

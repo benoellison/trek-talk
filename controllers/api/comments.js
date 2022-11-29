@@ -1,5 +1,6 @@
 const Comment = require('../../models/comments')
-const Episode = require('../../episode')
+// const Episode = require('../../episode')
+const Movie = require('../../models/movie')
 
 module.exports = {
     create,
@@ -7,16 +8,16 @@ module.exports = {
 }
 
 function create(req, res) {
-    Episode.findById(req.params.id, function(err, episode) {
+    Movie.findById(req.params.id, function(err, movie) {
         req.body.user = req.user._id
         req.body.userName = req.user.name
-        episode.comments.push(req.body)
-        episode.save(function(err) {
-            res.redirect(`/episodes/${episode._id}`)
+        movie.comments.push(req.body)
+        movie.save(function(err) {
+            res.redirect(`/movie/${movie._id}`)
         })
     })
 }
 
 function deleteComment(req, res, next) {
-    Episode.findById(req.comment.episode._id)
+    Movie.findById(req.comment.movie._id)
 }

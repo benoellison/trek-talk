@@ -6,6 +6,7 @@ import * as moviesAPI from '../../utilities/movies-api';
 import AuthPage from '../AuthPage/AuthPage'
 import MovieListPage from '../MovieListPage/MovieListPage';
 import SeriesListPage from '../SeriesListPage/SeriesListPage';
+import MovieDetailPage from '../MovieDetailPage/MovieDetailPage';
 import NavBar from '../../components/NavBar/NavBar'
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
           <Routes>
             <Route path="/movies" element={<MovieListPage movies={movies} />} />
             <Route path="/series" element={<SeriesListPage />} />
+            <Route path="/movies/:id" element={<MovieDetailPage movies={movies}/>} />
           </Routes>
         </>
         :
