@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const commentSchema = require('./commentSchema')
 
 const movieSchema = new Schema({
     title: {type: String, required: true},
-    comments: [{
-        type: [Schema.Types.ObjectId],
-        ref: 'Comment',
-    }],
+    comments: [commentSchema],
 },
 )
 

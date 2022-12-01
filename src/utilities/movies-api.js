@@ -9,3 +9,9 @@ export function getAll() {
 export function getById(id) {
     return sendRequest(`${BASE_URL}/${id}`)
 }
+
+export function addComment(id, content) {
+    console.log(id)
+    console.log(content)
+    return sendRequest(`${BASE_URL}/${id}/comments`, 'POST', ({content}))
+}
