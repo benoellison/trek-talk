@@ -26,14 +26,14 @@ export default function MovieDetailPage({movies, user, setUser}) {
       <div class='m-5' key={comment._id}>
         <h3 class="mb-1">trekkie: <span class='text-yellow-500'>{comment.user.name}</span></h3>
         {user._id === comment.user._id ? <>
-          <p class='font-bold'>{comment.content}</p>
+          <p class='text-xl font-bold text-red-500'>{comment.content}</p>
           <form onSubmit={editComment}>
             <input type="textarea" value={commentToEdit} onChange={(evt) => setCommentToEdit(evt.target.value)} name='content'></input>
             <button onClick={() => handleUpdate(comment._id)} type="submit">Edit this comment</button>
           </form>
           <button onClick={() => handleDelete(comment._id)}>Delete this comment</button>
         </>
-        : <p class='font-bold'>{comment.content}</p>
+        : <p class='text-xl font-bold text-red-500'>{comment.content}</p>
         }
       </div>
       )}) 
@@ -58,8 +58,8 @@ export default function MovieDetailPage({movies, user, setUser}) {
     async function editComment(evt) {
       evt.preventDefault();
       console.log('preparing to send')
-      movie = await moviesAPI.updateComment(updateCommentId, commentToEdit);
-      setMovie(movie);
+      // movie = await moviesAPI.updateComment(updateCommentId, commentToEdit);
+      // setMovie(movie);
     }
 
     return (
