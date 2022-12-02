@@ -27,10 +27,10 @@ export default function MovieDetailPage({movies, user, setUser}) {
         <h3 class="mb-1">trekkie: <span class='text-yellow-500'>{comment.user.name}</span></h3>
         {user._id === comment.user._id ? <>
           <p class='font-bold'>{comment.content}</p>
-          {/* <form onSubmit={editComment}>
+          <form onSubmit={editComment}>
             <input type="textarea" value={commentToEdit} onChange={(evt) => setCommentToEdit(evt.target.value)} name='content'></input>
             <button onClick={() => handleUpdate(comment._id)} type="submit">Edit this comment</button>
-          </form> */}
+          </form>
           <button onClick={() => handleDelete(comment._id)}>Delete this comment</button>
         </>
         : <p class='font-bold'>{comment.content}</p>
@@ -47,6 +47,7 @@ export default function MovieDetailPage({movies, user, setUser}) {
 
     function handleUpdate(id) {
       setUpdateCommentId(id);
+      console.log(id)
     }
 
     async function handleDelete(id) {
@@ -56,8 +57,9 @@ export default function MovieDetailPage({movies, user, setUser}) {
 
     async function editComment(evt) {
       evt.preventDefault();
-      // movie = await moviesAPI.updateComment(updateCommentId, commentToEdit);
-      // setMovie(movie);
+      console.log('preparing to send')
+      movie = await moviesAPI.updateComment(updateCommentId, commentToEdit);
+      setMovie(movie);
     }
 
     return (
@@ -65,9 +67,11 @@ export default function MovieDetailPage({movies, user, setUser}) {
         <h1 class='text-5xl text-yellow-500 mb-5'>{movie.title}</h1>
         <h2 class='text-4xl mb-3'>Commentary</h2>
         <div>{commentList}</div>
-        <form onSubmit={submitComment}>
-          <input type='textarea' value={newComment} onChange={(evt) => setNewComment(evt.target.value)} name='content'></input>
-          <button type="submit">Add Commentary</button>
+        <form class='flex items-center justify-center' onSubmit={submitComment}>
+          <div class='flex items-center justify-center'>
+          <input class='' type='textarea' value={newComment} onChange={(evt) => setNewComment(evt.target.value)} name='content'></input>
+          <button class='' type="submit">Add Commentary</button>
+          </div>
         </form>
       </>
       : <p>Loading</p>

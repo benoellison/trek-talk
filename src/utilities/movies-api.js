@@ -18,6 +18,7 @@ export function removeComment(id) {
 }
 
 export function updateComment(id, content) {
-    console.log('in movies-api')
+    console.log(id)
+    console.log(content)
     // return sendRequest(`api/comments/${id}`, 'PUT', ({content}))
 }

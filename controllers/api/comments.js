@@ -5,6 +5,7 @@ const Movie = require('../../models/movie')
 module.exports = {
     create,
     delete: deleteComment,
+    update,
 }
 
 function create(req, res) {

@@ -24,6 +24,8 @@ Sorry, you'll have to wait a day or two before this gets deployed :(
 <ul>
     <li>Actual deployment via Heroku</li>
     <li>Shows will be displayed along with the episodes to accompany them</li>
+    <li>Fully functional comment updating</li>
+    <li>Correctly ordered movies/shows</li>
     <li>Optional timestamp option for where in the episode you'd like to comment</li>
     <li>Recognizable screenshots for those confusingly named episodes</li>
 </ul>
