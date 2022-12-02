@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    //   colors: {
+    //     'starfleet-gold': '#ce9701',
+    // }
   },
   plugins: [],
 }

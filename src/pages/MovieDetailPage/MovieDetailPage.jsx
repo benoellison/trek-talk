@@ -23,17 +23,17 @@ export default function MovieDetailPage({movies, user, setUser}) {
 
     const commentList = movie ? movie.comments.map(comment => {
       return (
-      <div key={comment._id}>
-        <h3 class="text-red-800">trekkie: {comment.user.name }</h3>
+      <div class='m-5' key={comment._id}>
+        <h3 class="mb-1">trekkie: <span class='text-yellow-500'>{comment.user.name}</span></h3>
         {user._id === comment.user._id ? <>
-          <p>{comment.content}</p>
+          <p class='font-bold'>{comment.content}</p>
           {/* <form onSubmit={editComment}>
             <input type="textarea" value={commentToEdit} onChange={(evt) => setCommentToEdit(evt.target.value)} name='content'></input>
             <button onClick={() => handleUpdate(comment._id)} type="submit">Edit this comment</button>
           </form> */}
           <button onClick={() => handleDelete(comment._id)}>Delete this comment</button>
         </>
-        : <p>{comment.content}</p>
+        : <p class='font-bold'>{comment.content}</p>
         }
       </div>
       )}) 
@@ -62,13 +62,13 @@ export default function MovieDetailPage({movies, user, setUser}) {
 
     return (
       movie ? <>
-        <h1>{movie.title}</h1>
+        <h1 class='text-5xl text-yellow-500 mb-5'>{movie.title}</h1>
+        <h2 class='text-4xl mb-3'>Commentary</h2>
+        <div>{commentList}</div>
         <form onSubmit={submitComment}>
           <input type='textarea' value={newComment} onChange={(evt) => setNewComment(evt.target.value)} name='content'></input>
           <button type="submit">Add Commentary</button>
         </form>
-        <h2>Commentary</h2>
-        <div>{commentList}</div>
       </>
       : <p>Loading</p>
     )

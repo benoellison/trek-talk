@@ -46,7 +46,7 @@ export default function SignUpForm({ setUser }) {
                 <input type="email" name="email" value={formData.email} onChange={handleChange} required />
                 <label>Password</label>
                 <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-                <label>Confirm</label>
+                <label>Confirm password</label>
                 <input type="password" name="confirm" value={formData.confirm} onChange={handleChange} required />
                 <button type="submit" disabled={disable}>SIGN UP</button>
               </form>

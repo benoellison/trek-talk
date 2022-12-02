@@ -1,4 +1,3 @@
-// import { getAllByAltText } from '@testing-library/react'
 import sendRequest from './send-request'
 const BASE_URL = '/api/movies'
 

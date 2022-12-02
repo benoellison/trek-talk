@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import './App.css';
 import { getUser } from '../../utilities/users-service'
 import * as moviesAPI from '../../utilities/movies-api';
+import * as seriesAPI from '../../utilities/series-api';
 import AuthPage from '../AuthPage/AuthPage'
 import MovieListPage from '../MovieListPage/MovieListPage';
 import SeriesListPage from '../SeriesListPage/SeriesListPage';
@@ -19,6 +20,7 @@ export default function App() {
     }
     getMovies();
   }, []);
+
   // const [series, setSeries] = useState([])
   // useEffect(function() {
   //   async function getSeries() {
@@ -27,11 +29,13 @@ export default function App() {
   //   }
   //   getSeries();
   // }, []);
+
   return (
     <main className="App">
       { user ? 
         <>
-          <NavBar user={user} setUser={setUser} />
+          <h1 class='text-yellow-500 text-6xl mt-5 mb-0 font-black'>Trek Talk</h1>
+          <span class='m-5'><NavBar user={user} setUser={setUser} /></span>
           <Routes>
             <Route path="/movies" element={<MovieListPage movies={movies} />} />
             <Route path="/series" element={<SeriesListPage />} />

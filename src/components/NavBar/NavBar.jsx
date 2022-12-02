@@ -14,9 +14,9 @@ export default function NavBar({ user, setUser }) {
             &nbsp; | &nbsp;
             <Link to="/series">Series</Link>
             &nbsp; | &nbsp;
-            Welcome, {user.name}
+            Logged in as <span class='text-yellow-500'>{user.name}</span>
             &nbsp; | &nbsp;
-            <Link to="" onClick={handleLogOut}>Log Out</Link>
+            <Link class="text-red-500" to="" onClick={handleLogOut}>Log Out</Link>
         </nav>
     )
 }

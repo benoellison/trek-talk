@@ -2,11 +2,12 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as moviesAPI from '../../utilities/movies-api';
+import './MovieListPage.css'
 
 export default function MovieListPage({movies}) {
 
-    const movieList = movies.length ? movies.map(movie => (<>
-        <Link to={`/movies/${movie._id}`} key={movie._id} movie={movie}>{movie.title}</Link><br /></>))
+    const movieList = movies.length ? movies.map(movie => (<span class='underline text-yellow-500 hover:text-red-500'>
+        <Link to={`/movies/${movie._id}`} key={movie._id} movie={movie}>{movie.title}</Link><br /></span>))
         : <p>Loading</p>;
     // let {movieTitle} = useParams();
     
@@ -21,7 +22,7 @@ export default function MovieListPage({movies}) {
 
     return (
         <>
-            <h1>Movies</h1>
+            <h1 class='text-6xl mb-5'>Movies</h1>
             {movieList}
         </>
     )
