@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react"; 
 import { useParams } from "react-router-dom";
 import * as moviesAPI from '../../utilities/movies-api';
+import './MovieDetailPage.css'
+
 // import CommentList from "../../components/CommentList/CommentList";
 
-export default function MovieDetailPage({movies}) {
+export default function MovieDetailPage({movies, user, setUser}) {
 
     const { id } = useParams();
-    const [comment, setComment] = useState(null);
-  
+    const [newComment, setNewComment] = useState("");
+    const [commentToEdit, setCommentToEdit] = useState("");
+    const [updateCommentId, setUpdateCommentId] = useState("");
+
     let [movie, setMovie] = useState(null)
     useEffect(function() {
       async function getMovie() {
@@ -17,25 +21,50 @@ export default function MovieDetailPage({movies}) {
       getMovie();
     }, [id]);
 
-    const commentList = movie ? movie.comments.map(comment => {return (<p>{comment.content}</p>)}) : <p>Loading</p>;
+    const commentList = movie ? movie.comments.map(comment => {
+      return (
+      <div key={comment._id}>
+        <h3 class="text-red-800">trekkie: {comment.user.name }</h3>
+        {user._id === comment.user._id ? <>
+          <p>{comment.content}</p>
+          {/* <form onSubmit={editComment}>
+            <input type="textarea" value={commentToEdit} onChange={(evt) => setCommentToEdit(evt.target.value)} name='content'></input>
+            <button onClick={() => handleUpdate(comment._id)} type="submit">Edit this comment</button>
+          </form> */}
+          <button onClick={() => handleDelete(comment._id)}>Delete this comment</button>
+        </>
+        : <p>{comment.content}</p>
+        }
+      </div>
+      )}) 
+      : <p>Loading</p>;
 
     async function submitComment(evt) {
       evt.preventDefault();
-      // setComment(evt.target.value);
-      console.log(evt.target.value)
-      console.log(comment)
-      console.log(movie._id)
-      movie = await moviesAPI.addComment(movie._id, comment);
+      movie = await moviesAPI.addComment(movie._id, newComment);
       setMovie(movie);
-      console.log(movie.title)
-      console.log(comment)
+    }
+
+    function handleUpdate(id) {
+      setUpdateCommentId(id);
+    }
+
+    async function handleDelete(id) {
+      movie = await moviesAPI.removeComment(id)
+      setMovie(movie);
+    }
+
+    async function editComment(evt) {
+      evt.preventDefault();
+      // movie = await moviesAPI.updateComment(updateCommentId, commentToEdit);
+      // setMovie(movie);
     }
 
     return (
       movie ? <>
         <h1>{movie.title}</h1>
         <form onSubmit={submitComment}>
-          <input type='text' value={comment} onChange={(evt) => setComment(evt.target.value)} name='content'></input>
+          <input type='textarea' value={newComment} onChange={(evt) => setNewComment(evt.target.value)} name='content'></input>
           <button type="submit">Add Commentary</button>
         </form>
         <h2>Commentary</h2>

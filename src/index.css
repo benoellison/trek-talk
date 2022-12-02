@@ -1,3 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
 /* CSS Custom Properties */
 :root {
   --white: #FFFFFF;
@@ -21,7 +28,8 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: black;
+  color: white;
   padding: 2vmin;
   height: 100vh;
 }
@@ -121,7 +129,7 @@ button, a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  background-color: red;
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;

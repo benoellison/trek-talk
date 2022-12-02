@@ -5,8 +5,8 @@ import * as moviesAPI from '../../utilities/movies-api';
 
 export default function MovieListPage({movies}) {
 
-    const movieList = movies.length ? movies.map(movie => (
-        <Link to={`/movies/${movie._id}`} key={movie._id} movie={movie}>{movie.title}</Link>))
+    const movieList = movies.length ? movies.map(movie => (<>
+        <Link to={`/movies/${movie._id}`} key={movie._id} movie={movie}>{movie.title}</Link><br /></>))
         : <p>Loading</p>;
     // let {movieTitle} = useParams();
     

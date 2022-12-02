@@ -11,7 +11,14 @@ export function getById(id) {
 }
 
 export function addComment(id, content) {
-    console.log(id)
-    console.log(content)
     return sendRequest(`${BASE_URL}/${id}/comments`, 'POST', ({content}))
+}
+
+export function removeComment(id) {
+    return sendRequest(`/api/comments/${id}`, 'DELETE')
+}
+
+export function updateComment(id, content) {
+    console.log('in movies-api')
+    // return sendRequest(`api/comments/${id}`, 'PUT', ({content}))
 }

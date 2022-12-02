@@ -12,5 +12,6 @@ async function index(req, res) {
 
 async function show(req, res) {
     const movie =  await Movie.findById(req.params.id)
+    await movie.populate('comments.user')
     res.json(movie);
 }

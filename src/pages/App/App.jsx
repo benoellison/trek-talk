@@ -19,6 +19,14 @@ export default function App() {
     }
     getMovies();
   }, []);
+  // const [series, setSeries] = useState([])
+  // useEffect(function() {
+  //   async function getSeries() {
+  //     const series = await seriesAPI.getAll();
+  //     setSeries(series)
+  //   }
+  //   getSeries();
+  // }, []);
   return (
     <main className="App">
       { user ? 
@@ -27,7 +35,7 @@ export default function App() {
           <Routes>
             <Route path="/movies" element={<MovieListPage movies={movies} />} />
             <Route path="/series" element={<SeriesListPage />} />
-            <Route path="/movies/:id" element={<MovieDetailPage movies={movies}/>} />
+            <Route path="/movies/:id" element={<MovieDetailPage movies={movies} user={user} setUser={setUser}/>} />
           </Routes>
         </>
         :

@@ -8,19 +8,28 @@ module.exports = {
 }
 
 function create(req, res) {
-    console.log(req.body)
-    console.log(req.params)
     Movie.findById(req.params.id, function(err, movie) {
         req.body.user = req.user._id
-        // req.body.userName = req.user.name
-        console.log(req.body)
+        req.body.userName = req.user.name
         movie.comments.push(req.body)
-        movie.save(function(err) {
+        movie.save(async function(err) {
+            await movie.populate('comments.user');
             res.json(movie);
         })
     })
 }
 
 function deleteComment(req, res, next) {
-    Movie.findById(req.comment.movie._id)
+    Movie.findOne({'comments._id': req.params.id, 'comments.user': req.user._id}).then(function(movie) {
+        if (!movie) return;
+        movie.comments.remove(req.params.id);
+        movie.save(async function(err) {
+            await movie.populate('comments.user');
+            res.json(movie);
+        })
+    })
+}
+
+function update(req, res) {
+    console.log('editing editing')
 }
