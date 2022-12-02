@@ -25,18 +25,18 @@ const Series = require('./models/series');
 
   await Series.deleteMany({});
   const series = await Series.create([
-    {title: 'The Original Series'},
-    {title: 'The Next Generation'},
-    {title: 'Deep Space Nine'},
-    {title: 'Voyager'},
-    {title: 'Enterprise'},
-    {title: 'Discovery'},
-    {title: 'Short Treks'},
-    {title: 'Lower Decks'},
-    {title: 'Picard'},
-    {title: 'Strange New Worlds'},
-    {title: 'Prodigy'},
-    {title: 'Star Trek Continues'},
+    {title: 'The Original Series', seasons: 3,},
+    {title: 'The Next Generation', seasons: 7,},
+    {title: 'Deep Space Nine', seasons: 7,},
+    {title: 'Voyager', seasons: 7,},
+    {title: 'Enterprise', seasons: 4,},
+    {title: 'Discovery', seasons: 4,},
+    {title: 'Short Treks', seasons: 2,},
+    {title: 'Lower Decks', seasons: 3,},
+    {title: 'Picard', seasons: 2,},
+    {title: 'Strange New Worlds', seasons: 1,},
+    {title: 'Prodigy', seasons: 1,},
+    {title: 'Star Trek Continues', seasons: 1,},
   ]);
 
   process.exit();
