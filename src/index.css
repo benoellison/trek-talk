@@ -140,7 +140,7 @@ button, a.button {
   cursor: pointer;
 }
 
-button.btn-sm {
+/* button.btn-sm {
   font-size: 1.5vmin;
   padding: .6vmin .8vmin;
 }
@@ -153,7 +153,7 @@ button.btn-xs {
 button:disabled, form:invalid button[type="submit"] {
   cursor: not-allowed;
   background-color: var(--tan-4);
-}
+} */
 
 /* button[type="submit"] {
   grid-column: span 2;
